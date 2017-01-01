@@ -32,7 +32,7 @@ public class CaloricRequirements
     name = name.trim();
     
     
-    //get gender -----defaulting to male until I can figure this shit out 
+    //get gender -----defaulting to male until I can figure this out 
     
     //System.out.printf("Thank you %s, what is your gender? %n%nPlease enter 'M' for Male or 'F' for Female", name); 
     //if (gender = input.next().charAt(0));
