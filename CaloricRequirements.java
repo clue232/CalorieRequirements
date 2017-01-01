@@ -20,7 +20,7 @@ public class CaloricRequirements
     double weight = 0.0; // how much you weigh 
     double exerciseLvl = 0.0; // how active you are
     double age = 0.0; //what is your age
-    double BMR = 0.0; // MALE Basal Metabolic Rate (resting calorie burn rate) 
+    double bmr = 0.0; // MALE Basal Metabolic Rate (resting calorie burn rate) 
     double dailyCals = 0.0; // daily calories 
     
     
@@ -29,6 +29,7 @@ public class CaloricRequirements
     // greeting, get name
     System.out.printf("%n%nWelcome! Lets figure out your daily caloric requirements!%n%nWhat is your name? "); 
     name = input.nextLine();
+    name = name.trim();
     
     
     //get gender -----defaulting to male until I can figure this shit out 
@@ -53,39 +54,39 @@ public class CaloricRequirements
     exerciseLvl = input.nextInt(); 
     
     //MALE Formula for calculating Basal Metabolic Rate
-    BMR=  66 + (6.23* weight) + (12.7 * height) - (6.8 * age);
+    bmr=  66 + (6.23* weight) + (12.7 * height) - (6.8 * age);
     
     //FEMALE Formula for calculating Basal Metabolic Rate
-    //fBMR = 655 + (4.35 * weight) + (4.7 * height ) - (4.7 * age);
+    //fbmr = 655 + (4.35 * weight) + (4.7 * height ) - (4.7 * age);
     
     if (exerciseLvl <= 1 ) 
     { 
-      dailyCals= BMR * 1.2; 
+      dailyCals= bmr * 1.2; 
       
     } // end if =< 1) 
     
     else if (exerciseLvl <=3)
     {
-      dailyCals= BMR * 1.375; 
+      dailyCals= bmr * 1.375; 
     }// end if <=3
     
     else if (exerciseLvl <=5)
     {
-      dailyCals = BMR * 1.55;
+      dailyCals = bmr * 1.55;
       
     } // end if <=5
     
     else if (exerciseLvl <=6)
     {
-      dailyCals = BMR * 1.725;
+      dailyCals = bmr * 1.725;
     } // end if <=6
     
     else if (exerciseLvl <=8)
     {
-       dailyCals = BMR * 1.9;
+       dailyCals = bmr * 1.9;
     } // end if <=8 
     
-    System.out.printf("%s's daily caloric intake should be %s. %n%s's BMR is %s", name, dailyCals, name, BMR); 
+    System.out.printf("%s's daily caloric intake should be %s. %n%s's bmr is %s", name, dailyCals, name, bmr); 
     
     
     
