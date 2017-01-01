@@ -1,0 +1,20 @@
+/* 
+ * @(#)CaloricRequirements
+ * @author Matt Boyd
+ * Version 1.00 2017/01/01 9:30am
+ * 
+ * PROGRAM PURPOSE: Create a program that uses the Harris--Benedict formula to determine 
+ * your daily caloric requirements AND then breaks it down into your macro needs
+ */
+
+import java.util.Scanner; // import scanner class for data imput 
+
+public class CaloricRequirements
+  
+{
+ public static void main(String[]args)
+ {
+   
+   
+ } // End main 
+} // End application class 
