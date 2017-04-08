@@ -15,80 +15,152 @@ public class CaloricRequirements
   public static void main(String[]args)
   {
     String name = ""; // user name
-    char gender = 'm'; // if you're a male
+    int gender = 0; // gender 
     double height = 0.0; // how tall you are 
     double weight = 0.0; // how much you weigh 
     double exerciseLvl = 0.0; // how active you are
     double age = 0.0; //what is your age
-    double bmr = 0.0; // MALE Basal Metabolic Rate (resting calorie burn rate) 
+    double bmr = 0.0; // Basal Metabolic Rate (resting calorie burn rate) 
     double dailyCals = 0.0; // daily calories 
-    
+    double carbs = 0.0;
+    double proteins = 0.0;
+    double fats = 0.0;
     
     Scanner input = new Scanner(System.in); //Read input from keyboard
     
     // greeting, get name
-    System.out.printf("%n%nWelcome! Lets figure out your daily caloric requirements!%n%nWhat is your name? "); 
+    System.out.printf("%n%nWelcome! Using the Harris-Benedict Formula, let's figure out your daily caloric"
+                        + "requirements!%n%nWhat is your name? "); 
     name = input.nextLine();
-    name = name.trim();
     
     
-    //get gender -----defaulting to male until I can figure this out 
+    //get gender 
     
-    //System.out.printf("Thank you %s, what is your gender? %n%nPlease enter 'M' for Male or 'F' for Female", name); 
-    //if (gender = input.next().charAt(0));
+    System.out.printf("Thank you %s, what is your gender? %n%nPlease enter '1' for Male or '2' for Female: ", name); 
+    gender = input.nextInt();
     
     
-    System.out.printf("%n%s, You've selected Male!", name);  
+    while (gender == 1 ) 
+    {
+      
+      System.out.printf("You've selected male"); 
+      
+      System.out.printf("%n%nWhat is your age? ");
+      age = input.nextDouble(); 
+      
+      System.out.printf("How much do you weigh in pounds? ");
+      weight = input.nextInt();
+      
+      System.out.printf("How tall are you in inches? ");
+      height = input.nextInt();
+      
+      //MALE Formula for calculating Basal Metabolic Rate
+      bmr=  (66 + (6.23 * weight) + (12.7 * height) - (6.8 * age));
+      
+      System.out.printf("%s%n%s", "How many days a week will you be working out?" ,
+                        "Enter 8 if more workouts than days in week (2x's a day/5 days a week ect) ");
+      exerciseLvl = input.nextInt(); 
+     
+      
+      if (exerciseLvl <= 1 ) 
+      { 
+        dailyCals= bmr * 1.2; 
+        
+      } // end if =< 1) 
+      
+      else if (exerciseLvl <=3)
+      {
+        dailyCals= bmr * 1.375; 
+      }// end if <=3
+      
+      else if (exerciseLvl <=5)
+      {
+        dailyCals = bmr * 1.55;
+        
+      } // end if <=5
+      
+      else if (exerciseLvl <=6)
+      {
+        dailyCals = bmr * 1.725;
+      } // end if <=6
+      
+      else if (exerciseLvl <=8)
+      {
+        dailyCals = bmr * 1.9;
+      } // end if <=8 
+      
+      gender --;
+      
+    } // END Male While 
     
-    System.out.printf("%n%nWhat is your age? ");
-    age = input.nextInt(); 
-    
-    System.out.printf("How much do you weigh in pounds? ");
-    weight = input.nextInt();
-    
-    System.out.printf("How tall are you in inches? ");
-    height = input.nextInt();
-    
-    System.out.printf("%s%n%s", "How many days a week will you be working out?" ,
+    while (gender == 2 )
+    {
+      System.out.printf("You've selected female"); 
+      
+      System.out.printf("%n%nWhat is your age? ");
+      age = input.nextInt(); 
+      
+      System.out.printf("How much do you weigh in pounds? ");
+      weight = input.nextInt();
+      
+      System.out.printf("How tall are you in inches? ");
+      height = input.nextInt();
+      
+      //FEMALE Formula for calculating Basal Metabolic Rate
+      bmr = 655 + (4.35 * weight) + (4.7 * height ) - (4.7 * age);
+      
+      System.out.printf("%s%n%s", "How many days a week will you be working out?" ,
                         "Enter 8 if more workouts than days in week (2x's a day/5 days a week ect) "); 
-    exerciseLvl = input.nextInt(); 
-    
-    //MALE Formula for calculating Basal Metabolic Rate
-    bmr=  66 + (6.23* weight) + (12.7 * height) - (6.8 * age);
-    
-    //FEMALE Formula for calculating Basal Metabolic Rate
-    //fbmr = 655 + (4.35 * weight) + (4.7 * height ) - (4.7 * age);
-    
-    if (exerciseLvl <= 1 ) 
-    { 
-      dailyCals= bmr * 1.2; 
+      exerciseLvl = input.nextInt(); 
       
-    } // end if =< 1) 
-    
-    else if (exerciseLvl <=3)
-    {
-      dailyCals= bmr * 1.375; 
-    }// end if <=3
-    
-    else if (exerciseLvl <=5)
-    {
-      dailyCals = bmr * 1.55;
+      if (exerciseLvl <= 1 ) 
+      { 
+        dailyCals= bmr * 1.2; 
+        
+      } // end if =< 1) 
       
-    } // end if <=5
+      else if (exerciseLvl <=3)
+      {
+        dailyCals= bmr * 1.375; 
+      }// end if <=3
+      
+      else if (exerciseLvl <=5)
+      {
+        dailyCals = bmr * 1.55;
+        
+      } // end if <=5
+      
+      else if (exerciseLvl <=6)
+      {
+        dailyCals = bmr * 1.725;
+      } // end if <=6
+      
+      else if (exerciseLvl <=8)
+      {
+        dailyCals = bmr * 1.9;
+      } // end if <=8 
+      
+      gender ++;
+      
+    } // end female 
+   
+    System.out.printf("%n%nCUSTOMIZED CALORIC INTAKE REPORT%n%nGender Code = %s    (0 = male/3 = female)"
+                       + " %nHeight = %s %nWeight = %s %nAge = %s%nDays a week working out = %s", 
+                      + gender, height, weight, age, exerciseLvl);
     
-    else if (exerciseLvl <=6)
-    {
-      dailyCals = bmr * 1.725;
-    } // end if <=6
+    System.out.printf("%n%n%s's Basal Metabolic Rate is %.0f. %n%nTo maintain this weight at %s's current activity"
+                        + " level, his/her daily Coloric intake should be %n%.0f calories in a day%n",
+                       name, bmr, name, dailyCals); 
     
-    else if (exerciseLvl <=8)
-    {
-       dailyCals = bmr * 1.9;
-    } // end if <=8 
+    carbs = ((dailyCals/4)*0.4);
+    proteins = ((dailyCals/4)*0.4);
+    fats = ((dailyCals/9)*0.2);
+      
+    System.out.printf("%nFollowing a 40/40/20 split on Carbs, Proteins, and Fats respectively here is what your"
+                        + " calories should be built on:");
     
-    System.out.printf("%s's daily caloric intake should be %s. %n%s's bmr is %s", name, dailyCals, name, bmr); 
+    System.out.printf("%n%nCarbs = %.0f%nProteins = %.0f%nFats = %.0f%n", carbs, proteins, fats);
     
-    
-    
+
   } // End main 
 } // End application class 
